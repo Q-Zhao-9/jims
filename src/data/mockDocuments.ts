@@ -1,0 +1,68 @@
+import type { ApplicationDocument } from "@/domain/applicationDocument";
+
+export const MOCK_DOCUMENTS: ApplicationDocument[] = [
+  {
+    id: "doc-res-nw",
+    applicationId: "app-seed-1",
+    kind: "resume",
+    label: "Backend — emphasis",
+    fileName: "resume_backend_v3.pdf",
+    uploadedAt: "2026-02-15",
+  },
+  {
+    id: "doc-cl-nw",
+    applicationId: "app-seed-1",
+    kind: "cover_letter",
+    label: "Cover — Northwind",
+    fileName: "cover_northwind.pdf",
+    uploadedAt: "2026-02-28",
+  },
+  {
+    id: "doc-res-contoso",
+    applicationId: "app-seed-2",
+    kind: "resume",
+    label: "General SWE",
+    fileName: "resume_general.pdf",
+    uploadedAt: "2026-01-10",
+  },
+  {
+    id: "doc-cl-contoso",
+    applicationId: "app-seed-2",
+    kind: "cover_letter",
+    label: "Cover — Contoso",
+    fileName: "cover_contoso.pdf",
+    uploadedAt: "2026-03-17",
+  },
+  {
+    id: "doc-ref-contoso",
+    applicationId: "app-seed-2",
+    kind: "reference_letter",
+    label: "Ref — former manager",
+    fileName: "reference_manager.pdf",
+    uploadedAt: "2026-03-10",
+  },
+  {
+    id: "doc-res-fab",
+    applicationId: "app-seed-3",
+    kind: "resume",
+    label: "Platform focus",
+    fileName: "resume_platform.pdf",
+    uploadedAt: "2026-02-01",
+  },
+  {
+    id: "doc-res-adv",
+    applicationId: "app-seed-4",
+    kind: "resume",
+    label: "Full stack",
+    fileName: "resume_fullstack.pdf",
+    uploadedAt: "2025-11-20",
+  },
+  {
+    id: "doc-draft",
+    applicationId: null,
+    kind: "resume",
+    label: "Draft — data",
+    fileName: "resume_data_draft.pdf",
+    uploadedAt: "2026-03-25",
+  },
+];

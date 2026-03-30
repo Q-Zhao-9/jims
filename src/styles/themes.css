@@ -1,0 +1,125 @@
+/* Theme tokens — applied via html[data-theme="..."] (see ThemeContext + index.html bootstrap). */
+
+:root,
+html[data-theme="obsidian"] {
+  color-scheme: dark;
+  --bg: #0c0e12;
+  --surface: #141821;
+  --surface-2: #1c2230;
+  --border: #2a3142;
+  --text: #e8ebf2;
+  --muted: #9aa6b8;
+  --accent: #6ee7b7;
+  --accent-dim: #34d39966;
+  --danger: #fb7185;
+  --warning: #fbbf24;
+  --shadow: 0 18px 50px #00000055;
+  --row-hover: rgba(255, 255, 255, 0.035);
+  --modal-backdrop: rgba(0, 0, 0, 0.55);
+  --btn-primary-fg: #ecfdf5;
+  --body-bg: radial-gradient(1200px 600px at 10% -10%, #1e293b 0%, transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, #0f766e33 0%, transparent 50%), var(--bg);
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f6f8fa;
+  --surface: #ffffff;
+  --surface-2: #f0f3f6;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --muted: #59636e;
+  --accent: #0969da;
+  --accent-dim: #0969da33;
+  --danger: #cf222e;
+  --warning: #9a6700;
+  --shadow: 0 18px 50px rgba(31, 35, 40, 0.1);
+  --row-hover: rgba(31, 35, 40, 0.045);
+  --modal-backdrop: rgba(31, 35, 40, 0.42);
+  --btn-primary-fg: #ffffff;
+  --body-bg: linear-gradient(180deg, #f6f8fa 0%, #eaeef2 100%);
+}
+
+html[data-theme="nord"] {
+  color-scheme: dark;
+  --bg: #2e3440;
+  --surface: #3b4252;
+  --surface-2: #434c5e;
+  --border: #4c566a;
+  --text: #eceff4;
+  --muted: #aeb3bb;
+  --accent: #88c0d0;
+  --accent-dim: #88c0d044;
+  --danger: #bf616a;
+  --warning: #ebcb8b;
+  --shadow: 0 18px 50px #00000055;
+  --row-hover: rgba(255, 255, 255, 0.04);
+  --modal-backdrop: rgba(0, 0, 0, 0.5);
+  --btn-primary-fg: #2e3440;
+  --body-bg: radial-gradient(1000px 500px at 0% 0%, #4c566a33 0%, transparent 45%),
+    radial-gradient(800px 400px at 100% 0%, #5e81ac22 0%, transparent 50%), var(--bg);
+}
+
+html[data-theme="rose"] {
+  color-scheme: dark;
+  --bg: #0c0a0b;
+  --surface: #171213;
+  --surface-2: #221a1d;
+  --border: #3f2f35;
+  --text: #f4e8ea;
+  --muted: #b9a8ac;
+  --accent: #fb7185;
+  --accent-dim: #fb718544;
+  --danger: #f87171;
+  --warning: #fbbf24;
+  --shadow: 0 18px 50px #00000055;
+  --row-hover: rgba(255, 255, 255, 0.035);
+  --modal-backdrop: rgba(0, 0, 0, 0.58);
+  --btn-primary-fg: #fff1f2;
+  --body-bg: radial-gradient(900px 500px at 100% 0%, #fb718522 0%, transparent 50%), var(--bg);
+}
+
+html[data-theme="midnight"] {
+  color-scheme: dark;
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-2: #334155;
+  --border: #475569;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --accent: #818cf8;
+  --accent-dim: #818cf844;
+  --danger: #f472b6;
+  --warning: #fbbf24;
+  --shadow: 0 18px 50px #00000055;
+  --row-hover: rgba(255, 255, 255, 0.04);
+  --modal-backdrop: rgba(0, 0, 0, 0.55);
+  --btn-primary-fg: #eef2ff;
+  --body-bg: radial-gradient(1100px 550px at 10% -10%, #312e81 0%, transparent 55%),
+    radial-gradient(900px 450px at 90% 0%, #4f46e533 0%, transparent 50%), var(--bg);
+}
+
+/* Primary buttons — align with each theme’s accent */
+html[data-theme="light"] .btn-primary {
+  background: linear-gradient(135deg, #0550ae, #0969da);
+  border-color: #218bff;
+  color: #ffffff;
+}
+
+html[data-theme="nord"] .btn-primary {
+  background: linear-gradient(135deg, #5e81ac, #88c0d0);
+  border-color: #8fbcbb;
+  color: #2e3440;
+}
+
+html[data-theme="rose"] .btn-primary {
+  background: linear-gradient(135deg, #e11d48, #fb7185);
+  border-color: #fb7185;
+  color: #fff1f2;
+}
+
+html[data-theme="midnight"] .btn-primary {
+  background: linear-gradient(135deg, #4f46e5, #818cf8);
+  border-color: #818cf8;
+  color: #eef2ff;
+}

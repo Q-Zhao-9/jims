@@ -1,0 +1,1 @@
+"""JIMS FastAPI application package."""

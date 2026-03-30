@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+
+# Build / Vite
+dist/
+
+# Env & secrets (never commit)
+.env
+.env.*
+!.env.example
+!**/.env.example
+*.local
+
+# SQLite / local DB
+*.db
+*.sqlite
+*.sqlite3
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+.eggs/
+
+# Backend runtime artifacts
+backend/.env
+backend/jims.db
+backend/uploads/
+
+# Logs & OS
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Test / coverage (frontend)
+coverage/
