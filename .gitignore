@@ -49,3 +49,6 @@ Thumbs.db
 
 # Test / coverage (frontend)
 coverage/
+
+# Local deploy smoke tests
+_webapps_smoketest/

@@ -1,6 +1,11 @@
+# Dev:  `docker compose up -d db`     → localhost:5432, volume jims_pgdata
+# Prod: `docker compose up -d db_prod` → localhost:5433, volume jims_pgdata_prod
+# Run only one per machine if you need both DBs at once (different ports/volumes).
+
 services:
   db:
     image: postgres:16-alpine
+    container_name: jims-postgres-dev
     environment:
       POSTGRES_USER: jims
       POSTGRES_PASSWORD: jims
@@ -10,5 +15,18 @@ services:
     volumes:
       - jims_pgdata:/var/lib/postgresql/data
 
+  db_prod:
+    image: postgres:16-alpine
+    container_name: jims-postgres-prod
+    environment:
+      POSTGRES_USER: jims
+      POSTGRES_PASSWORD: jims_prod
+      POSTGRES_DB: jims
+    ports:
+      - "5433:5432"
+    volumes:
+      - jims_pgdata_prod:/var/lib/postgresql/data
+
 volumes:
   jims_pgdata:
+  jims_pgdata_prod:
