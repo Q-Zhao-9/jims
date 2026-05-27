@@ -598,6 +598,10 @@ body {
 .toolbox-menu > summary {
   /* Hide default <details> marker; we keep the summary as a pill button. */
   list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text);
 }
 
 .toolbox-menu > summary::-webkit-details-marker {
@@ -607,6 +611,13 @@ body {
 .toolbox-menu__summary {
   /* Make the summary feel like a compact nav item (instead of a full button). */
   padding: 0.35rem 0.75rem;
+  border: 1px solid var(--border);
+}
+
+.toolbox-menu__summary::after {
+  content: "▾";
+  font-size: 0.9em;
+  color: var(--muted);
 }
 
 .toolbox-menu__list {
