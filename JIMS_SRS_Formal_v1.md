@@ -383,6 +383,16 @@ To copy the built SPA and backend to **`C:\webapps\jims`** (or another path) **w
 - Produces **`www\`** (static build), **`backend\`**, **`run-api.ps1`**, and **`README.txt`**. This is a file layout only; use **`run-api.ps1`** for the API, or **`scripts\prod-stack.ps1`** from the repo for integrated local preview. See **`deploy\webapps\README.txt`**.
 - For **nginx** as reverse proxy for **`/api/`** → FastAPI on **`127.0.0.1:8001`**, see **`deploy\nginx\jims.conf`**.
 
+### 10.8 Docker deployment
+
+The repository includes **Dockerfile**s and extended **`docker-compose.yml`** services:
+
+- **`db`** — Postgres (dev) with healthcheck; **`api`** depends on it via **`DATABASE_URL=postgresql://jims:jims@db:5432/jims`**.
+- **`api`** — **`backend/Dockerfile`**, FastAPI on port **8000** inside the Compose network; uploads on volume **`jims_api_uploads`**.
+- **`web`** — **`Dockerfile.frontend`** (multi-stage Node build + nginx:alpine); serves the SPA and **`location /api/`** forwards to **`http://api:8000`**. Host port **`${JIMS_WEB_PORT:-8080}`** maps to container **80**.
+
+**Run the stack** (from repo root): **`docker compose up --build -d db api web`**. Open **`http://localhost:8080`**. Set **`SECRET_KEY`** (and optionally **`CORS_ORIGINS`**, **`JIMS_WEB_PORT`**) via environment or a `.env` file beside compose. See **`deploy/docker/README.txt`**.
+
 ---
 
 ## 11. Future Enhancements 🚀

@@ -1,0 +1,10 @@
+backend
+.git
+.github
+**/node_modules
+dist
+coverage
+logs
+_inetpub_smoketest
+_webapps_smoketest
+mcps

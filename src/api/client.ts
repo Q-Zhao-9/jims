@@ -42,7 +42,18 @@ export async function apiJson<T>(
   }
 
   const text = await res.text();
-  const data = text ? (JSON.parse(text) as unknown) : null;
+  let data: unknown = null;
+  if (text) {
+    try {
+      data = JSON.parse(text) as unknown;
+    } catch {
+      const hint =
+        text.trimStart().startsWith("<") && res.status >= 500
+          ? "The API is unavailable (server returned HTML instead of JSON). If you use Docker, restart the web container or rebuild after updating nginx config."
+          : "The server returned a non-JSON response.";
+      throw new ApiError(res.status, hint);
+    }
+  }
 
   if (!res.ok) {
     throw new ApiError(res.status, detailMessage(data), data);

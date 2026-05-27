@@ -1,6 +1,8 @@
-# Dev:  `docker compose up -d db`     → localhost:5432, volume jims_pgdata
-# Prod: `docker compose up -d db_prod` → localhost:5433, volume jims_pgdata_prod
-# Run only one per machine if you need both DBs at once (different ports/volumes).
+# Dev Postgres:       docker compose up -d db
+# Prod Postgres:      docker compose up -d db_prod
+# Full app (Docker):  docker compose up --build -d api web   (needs healthy db first)
+#
+# Browser: http://localhost:8080  (override JIMS_WEB_PORT in .env)
 
 services:
   db:
@@ -11,9 +13,15 @@ services:
       POSTGRES_PASSWORD: jims
       POSTGRES_DB: jims
     ports:
-      - "5432:5432"
+      - "${JIMS_DB_HOST_PORT:-5432}:5432"
     volumes:
       - jims_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U jims -d jims"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
 
   db_prod:
     image: postgres:16-alpine
@@ -27,6 +35,34 @@ services:
     volumes:
       - jims_pgdata_prod:/var/lib/postgresql/data
 
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: jims-api
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://jims:jims@db:5432/jims
+      SECRET_KEY: ${SECRET_KEY:-change-me-in-production}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:8080,http://127.0.0.1:8080}
+    volumes:
+      - jims_api_uploads:/app/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: jims-web
+    restart: unless-stopped
+    ports:
+      - "${JIMS_WEB_PORT:-8080}:80"
+    depends_on:
+      - api
+
 volumes:
   jims_pgdata:
   jims_pgdata_prod:
+  jims_api_uploads:
