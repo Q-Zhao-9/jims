@@ -17,6 +17,13 @@ const links: { to: string; label: string }[] = [
   { to: "/employers", label: "Employers" },
 ];
 
+const toolboxNavClass = ({ isActive }: { isActive: boolean }) =>
+  `toolbox-menu__item${isActive ? " toolbox-menu__item--active" : ""}`;
+
+const toolboxLinks: { to: string; label: string }[] = [
+  { to: "/salary", label: "Salary calculator" },
+];
+
 export function AppLayout() {
   const { user, loading, logout } = useAuth();
   const navigate = useNavigate();
@@ -40,6 +47,16 @@ export function AppLayout() {
             </NavLink>
           ))}
           <ThemeSelect />
+          <details className="toolbox-menu">
+            <summary className="btn btn-ghost toolbox-menu__summary">Toolbox</summary>
+            <div className="toolbox-menu__list" role="menu" aria-label="Toolbox">
+              {toolboxLinks.map(({ to, label }) => (
+                <NavLink key={to} to={to} className={toolboxNavClass} end>
+                  {label}
+                </NavLink>
+              ))}
+            </div>
+          </details>
           {loading ? (
             <span className="nav-link nav-link--muted">…</span>
           ) : user ? (

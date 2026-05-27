@@ -10,6 +10,7 @@ import { AiHubPage } from "@/pages/AiHubPage";
 import { AnalyticsPage } from "@/pages/AnalyticsPage";
 import { AuthPage } from "@/pages/AuthPage";
 import { EmployersPage } from "@/pages/EmployersPage";
+import { SalaryCalculatorPage } from "@/pages/SalaryCalculatorPage";
 
 export function App() {
   return (
@@ -25,6 +26,7 @@ export function App() {
         <Route path="notes" element={<NotesFeedbackPage />} />
         <Route path="ai" element={<AiHubPage />} />
         <Route path="analytics" element={<AnalyticsPage />} />
+        <Route path="salary" element={<SalaryCalculatorPage />} />
         <Route path="sign-in" element={<AuthPage />} />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Route>

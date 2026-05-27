@@ -591,6 +591,66 @@ body {
   align-items: center;
 }
 
+.toolbox-menu {
+  position: relative;
+}
+
+.toolbox-menu > summary {
+  /* Hide default <details> marker; we keep the summary as a pill button. */
+  list-style: none;
+}
+
+.toolbox-menu > summary::-webkit-details-marker {
+  display: none;
+}
+
+.toolbox-menu__summary {
+  /* Make the summary feel like a compact nav item (instead of a full button). */
+  padding: 0.35rem 0.75rem;
+}
+
+.toolbox-menu__list {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  z-index: 20;
+
+  display: none;
+  flex-direction: column;
+  gap: 0.1rem;
+
+  min-width: 220px;
+  padding: 0.35rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.toolbox-menu[open] .toolbox-menu__list {
+  display: flex;
+}
+
+.toolbox-menu__item {
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+  border-radius: 8px;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+}
+
+.toolbox-menu__item:hover {
+  background: var(--surface-2);
+  border-color: var(--border);
+}
+
+.toolbox-menu__item--active {
+  background: var(--surface-2);
+  border-color: var(--border);
+}
+
 .theme-select {
   display: flex;
   align-items: center;
